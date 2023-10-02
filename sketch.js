@@ -1,4 +1,16 @@
 // GET VARIABLES
+//index
+//// localStorage.setItem('name', userName);
+
+//page1
+//// localStorage.setItem('animal', userAnimal);
+//// localStorage.setItem('jpSong', jpSong);
+
+//page2
+//// localStorage.setItem('color', userColor);
+//// localStorage.setItem('vocaloidSong', vocaloidSong);
+// ALL VARIABLES
+
 //name - index.html
 function getName() {
   var nameInput = document.getElementById("name-input");
@@ -18,11 +30,9 @@ function chooseAnimal(choice, button1) {
     AniLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
   }
 
-  // Update the style of the currently clicked button
   button1.style.backgroundColor = "#b8dae6";
   button1.style.border = "3px solid rgb(103, 192, 224)";
 
-  // Update the lastClickedButton variable to the current button
   AniLastClickedButton = button1;
 }
 
@@ -45,15 +55,64 @@ function updateSongPref(choice, button) {
   jpLastClickedButton = button;
 }
 
+//color - page2.html
+let userColor = '';
+let ColLastClickedButton = null;
+function chooseColor(choice, buttonCol) {
+  userColor = choice;
+  localStorage.setItem('color', userColor);
+
+  if (ColLastClickedButton) {
+    ColLastClickedButton.style.backgroundColor = "#d8d8d8";
+    ColLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  buttonCol.style.backgroundColor = "#b8dae6";
+  buttonCol.style.border = "3px solid rgb(103, 192, 224)";
+
+  ColLastClickedButton = buttonCol;
+}
+
+let vocaloidSong = null;
+let vocLastClickedButton = null;
+function updateVocaloidSongPref(choice, button) {
+  vocaloidSong = choice;
+  localStorage.setItem('vocaloidSong', vocaloidSong);
+
+  //changing button color
+  if (vocLastClickedButton) {
+    vocLastClickedButton.style.backgroundColor = "#d8d8d8";
+    vocLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  button.style.backgroundColor = "#bbb8e6";
+  button.style.border = "3px solid rgb(112, 127, 247)";
+
+  vocLastClickedButton = button;
+}
+
 // LOADING MESSAGE
 // page1.html
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
+
   const userName = urlParams.get("name");
 
   const p1_welcome = document.getElementById("p1-welcome-Message");
   p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to meet you :D";
 });
+
+// page2.html
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const userAnimalFromStorage = localStorage.getItem("animal");
+
+  const p2_animalMessage = document.getElementById("p2-animal-Message");
+  p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", here are some cute " + userAnimalFromStorage + "'s GIFs just for you!";
+});
+
+
 
 
 
