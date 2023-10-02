@@ -1,17 +1,60 @@
 // GET VARIABLES
+//name - index.html
 function getName() {
   var nameInput = document.getElementById("name-input");
   var userName = nameInput.value;
   localStorage.setItem('name', userName);
 }
 
+//animel - page1.html
+let userAnimal = '';
+let AniLastClickedButton = null;
+function chooseAnimal(choice, button1) {
+  userAnimal = choice;
+  localStorage.setItem('animal', userAnimal);
+
+  if (AniLastClickedButton) {
+    AniLastClickedButton.style.backgroundColor = "#d8d8d8";
+    AniLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  // Update the style of the currently clicked button
+  button1.style.backgroundColor = "#b8dae6";
+  button1.style.border = "3px solid rgb(103, 192, 224)";
+
+  // Update the lastClickedButton variable to the current button
+  AniLastClickedButton = button1;
+}
+
+//jpSong - page1.html
+let jpSong = null;
+let jpLastClickedButton = null;
+function updateSongPref(choice, button) {
+  jpSong = choice;
+  localStorage.setItem('jpSong', jpSong);
+
+  //changing button color
+  if (jpLastClickedButton) {
+    jpLastClickedButton.style.backgroundColor = "#d8d8d8";
+    jpLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  button.style.backgroundColor = "#bbb8e6";
+  button.style.border = "3px solid rgb(112, 127, 247)";
+
+  jpLastClickedButton = button;
+}
+
+// LOADING MESSAGE
+// page1.html
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get("name");
 
-  const message_p2 = document.getElementById("p2_message");
-  message_p2.innerText = "Hey " + localStorage.getItem("name") + "";
+  const p1_welcome = document.getElementById("p1-welcome-Message");
+  p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to meet you :D";
 });
+
 
 
 
