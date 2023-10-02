@@ -9,6 +9,10 @@
 //page2
 //// localStorage.setItem('color', userColor);
 //// localStorage.setItem('vocaloidSong', vocaloidSong);
+
+//page3
+//
+//// localStorage.setItem('oldSong', oldSong);
 // ALL VARIABLES
 
 //name - index.html
@@ -73,6 +77,7 @@ function chooseColor(choice, buttonCol) {
   ColLastClickedButton = buttonCol;
 }
 
+//vocaloidSong - page2.html
 let vocaloidSong = null;
 let vocLastClickedButton = null;
 function updateVocaloidSongPref(choice, button) {
@@ -90,6 +95,44 @@ function updateVocaloidSongPref(choice, button) {
 
   vocLastClickedButton = button;
 }
+
+//flower - page2.html
+let userFlower = null;
+let floLastClickedButton = null;
+function chooseFlower(choice, buttonFlo) {
+  userFlower = choice;
+  localStorage.setItem('flower', userFlower);
+
+  if (floLastClickedButton) {
+    floLastClickedButton.style.backgroundColor = "#d8d8d8";
+    floLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  buttonFlo.style.backgroundColor = "#b8dae6";
+  buttonFlo.style.border = "3px solid rgb(103, 192, 224)";
+
+  floLastClickedButton = buttonFlo;
+}
+
+//oldSong - page3.html
+let oldSong = null;
+let oldLastClickedButton = null;
+function updateOldSongPref(choice, button) {
+  oldSong = choice;
+  localStorage.setItem('oldSong', oldSong);
+
+  //changing button color
+  if (oldLastClickedButton) {
+    oldLastClickedButton.style.backgroundColor = "#d8d8d8";
+    oldLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  button.style.backgroundColor = "#bbb8e6";
+  button.style.border = "3px solid rgb(112, 127, 247)";
+
+  oldLastClickedButton = button;
+}
+
 
 // LOADING MESSAGE
 // page1.html
@@ -112,14 +155,19 @@ document.addEventListener("DOMContentLoaded", () => {
   p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", here are some cute " + userAnimalFromStorage + "'s GIFs just for you!";
 });
 
+// page3.html
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
 
+  const userColorFromStorage = localStorage.getItem("color");
 
-
-
+  const p3_colorMessage = document.getElementById("p3-color-Message");
+  p3_colorMessage.innerText = "I see you like " + userColorFromStorage + ", I changed the background color just for you! Do you like it?";
+});
 
 
 // MOVING FLOWERS AROUND (p5.js)
-let flowerShow = false;
+// let flowerShow = true;
 
 let images = [];
 let imageSize = 200; // all sizes
@@ -165,9 +213,9 @@ function setup() {
 }
 
 function draw() {
-  // background(100);
+  background(250);
 
-  if (flowerShow) {
+  if (userFlower) {
     for (let img of images) {
       image(img, img.x, img.y);
     }

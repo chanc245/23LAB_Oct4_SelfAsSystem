@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <title>Music Recommendation from chris</title>
+</head>
+
+<body>
+  <div id="canvas-wrapper"></div>
+
+  <div class="text-container">
+    <h1 class="light">Chris's Music Recommendation</h1>
+    <p id="p3-color-Message"></p>
+    <p>Only 2 more pages left!</p>
+
+    <p class="user">Do you like flowers?</p>
+    <div class="btn-container">
+      <button class="btn user" onclick="chooseFlower(true, this)">yes</button>
+      <button class="btn user" onclick="chooseFlower(false, this)">no</button>
+    </div>
+
+    <p class="light">Are you interested in old song?</p>
+    <div class="btn-container">
+      <button class="btn music" onclick="updateOldSongPref(true, this)">yes</button>
+      <button class="btn music" onclick="updateOldSongPref(false, this)">no</button>
+    </div>
+    <a href="page4.html">
+      <button class="btn" onclick="flowerActivate(true)">Next!</button>
+    </a>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="sketch.js"></script>
+</body>
+
+</html>
