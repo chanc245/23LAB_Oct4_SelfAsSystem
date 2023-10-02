@@ -225,6 +225,70 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+// CALCULATE RESULT
+function songResult() {
+  var userData = {
+    name: localStorage.getItem("name"),
+    animal: localStorage.getItem("animal"),
+    jpSong: localStorage.getItem("jpSong"),
+    color: localStorage.getItem("color"),
+    vocaloidSong: localStorage.getItem("vocaloidSong"),
+    flower: localStorage.getItem("flower"),
+    oldSong: localStorage.getItem("oldSong"),
+    mood: localStorage.getItem("mood"),
+    match: localStorage.getItem("match")
+  };
+
+  var userDataJSON = JSON.stringify(userData);
+
+  if (!userData.jpSong) {
+    alert("Musical");
+  } else if (userData.jpSong && userData.vocaloidSong) {
+    alert("Vocaloid");
+  } else if (userData.jpSong && !userData.vocaloidSong && userData.oldSong) {
+    alert("J80sPop");
+  } else if (userData.jpSong && !userData.vocaloidSong && !userData.oldSong) {
+    alert("JPop");
+  } else {
+    alert("Some other genre");
+  }
+
+
+  //im going crazy, this never works, not even chatGPTcan help? oh my god, im done with this.
+
+
+
+  // // Get all the iframes within the container
+  // var iframes = document.querySelectorAll('#iframe-container iframe');
+  // //musical-upbeat, musical-sad, 
+  // //jpop-80s, 
+  // //vocaloid-upbeat, vocaloid-sad,
+  // //jpop-chill, jpop-upbeat, 
+
+  // // Generate a random index
+  // var randomIndex = Math.floor(Math.random() * iframes.length);
+
+  // // Hide all iframes
+  // for (var i = 0; i < iframes.length; i++) {
+  //   iframes[i].style.display = 'none';
+  // }
+
+  // // Display the randomly selected iframe
+  // iframes[randomIndex].style.display = 'block';
+
+
+}
+
+
+
+
+
+
+
+
+
 // MOVING FLOWERS AROUND (p5.js)
 // let flowerShow = true;
 

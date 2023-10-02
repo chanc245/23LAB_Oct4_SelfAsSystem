@@ -132,3 +132,15 @@ input[type="text"]:focus {
 
   z-index: 1;
 }
+
+/* SPOTIFY PLAYER */
+#iframe-container {
+  display: flex;
+  width: 50%;
+  /* height: 98vh; */
+  height: 50%
+}
+
+#iframe-container iframe {
+  display: none;
+}
