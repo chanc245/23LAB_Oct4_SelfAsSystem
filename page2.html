@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <title>Music Recommendation from chris</title>
+</head>
+
+<body>
+  <div id="canvas-wrapper"></div>
+
+  <div class="text-container">
+    <h1 class="light">Chris's Music Recommendation</h1>
+    <p id="p2-animal-Message"></p>
+    <p>Only 3 more pages left!</p>
+
+    <p class="user">What color do you like?</p>
+    <div class="btn-container">
+      <button class="btn user" onclick="chooseColor('pink', this)">pink</button>
+      <button class="btn user" onclick="chooseColor('orange', this)">orange</button>
+      <button class="btn user" onclick="chooseColor('yellow', this)">yellow</button>
+      <button class="btn user" onclick="chooseColor('green', this)">green</button>
+      <button class="btn user" onclick="chooseColor('blue', this)">blue</button>
+      <button class="btn user" onclick="chooseColor('purple', this)">purple</button>
+    </div>
+
+    <p class="light">Would you like some music that’s not sung by human?</p>
+    <div class="btn-container">
+      <button class="btn music" onclick="updateVocaloidSongPref(true, this)">yes!</button>
+      <button class="btn music" onclick="updateVocaloidSongPref(false, this)">no.</button>
+    </div>
+    <a href="page3.html">
+      <button class="btn">Next!</button>
+    </a>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="sketch.js"></script>
+</body>
+
+</html>
