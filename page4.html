@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <title>Music Recommendation from chris</title>
+</head>
+
+<body>
+  <div id="canvas-wrapper"></div>
+
+  <div class="text-container">
+    <h1 class="light">Chris's Music Recommendation</h1>
+    <!-- <p id="p4-flower-Message"></p> -->
+    <p>This is the last page with questions :D</p>
+
+    <p class="light">What kind of mood are you in right now?</p>
+    <div class="btn-container">
+      <button class="btn music" onclick="moodInput(true, this)">Happy</button>
+      <button class="btn music" onclick="moodInput(false, this)">Sad</button>
+    </div>
+
+    <p class="light">Would you like the music to match your mood?</p>
+    <div class="btn-container">
+      <button class="btn music" onclick="matchInput(true, this)">yes</button>
+      <button class="btn music" onclick="matchInput(false, this)">no</button>
+    </div>
+    <a href="result.html">
+      <button class="btn">Final Page</button>
+    </a>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="sketch.js"></script>
+</body>
+
+</html>

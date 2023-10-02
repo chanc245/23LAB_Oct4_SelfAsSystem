@@ -11,8 +11,12 @@
 //// localStorage.setItem('vocaloidSong', vocaloidSong);
 
 //page3
-//
+//// localStorage.setItem('flower', userFlower);
 //// localStorage.setItem('oldSong', oldSong);
+
+//page4
+//// localStorage.setItem('mood', mood);
+//// localStorage.setItem('match', match);
 // ALL VARIABLES
 
 //name - index.html
@@ -133,6 +137,45 @@ function updateOldSongPref(choice, button) {
   oldLastClickedButton = button;
 }
 
+//mood - page4.html
+let mood = null;
+let moodLastClickedButton = null;
+function moodInput(choice, button) {
+  mood = choice;
+  localStorage.setItem('mood', mood);
+
+  //changing button color
+  if (moodLastClickedButton) {
+    moodLastClickedButton.style.backgroundColor = "#d8d8d8";
+    moodLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  button.style.backgroundColor = "#bbb8e6";
+  button.style.border = "3px solid rgb(112, 127, 247)";
+
+  moodLastClickedButton = button;
+}
+
+//mood - page3.html
+let match = null;
+let matchLastClickedButton = null;
+function matchInput(choice, buttonMat) {
+  match = choice;
+  localStorage.setItem('match', match);
+
+  //changing button color
+  if (matchLastClickedButton) {
+    matchLastClickedButton.style.backgroundColor = "#d8d8d8";
+    matchLastClickedButton.style.border = "3px solid rgba(169, 169, 169, 0)";
+  }
+
+  buttonMat.style.backgroundColor = "#bbb8e6";
+  buttonMat.style.border = "3px solid rgb(112, 127, 247)";
+
+  matchLastClickedButton = buttonMat;
+}
+
+
 
 // LOADING MESSAGE
 // page1.html
@@ -163,6 +206,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const p3_colorMessage = document.getElementById("p3-color-Message");
   p3_colorMessage.innerText = "I see you like " + userColorFromStorage + ", I changed the background color just for you! Do you like it?";
+});
+
+// page4.html
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const userFlowerFromStorage = localStorage.getItem("flower");
+
+  const p4_flowerMessage = document.getElementById("p4-flower-Message");
+
+  if (userFlower = "true") {
+    // p4_flowerMessage.innerText = "Good that you like flowers:D Here are some flowers you can drag around with!";
+    p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
+  } else {
+    p4_flowerMessage.innerText = "it's alright that you don't like flowers! You can drag around some flower to get closer to them c:";
+  }
 });
 
 
@@ -215,7 +274,7 @@ function setup() {
 function draw() {
   background(250);
 
-  if (userFlower) {
+  if (flowerShow) {
     for (let img of images) {
       image(img, img.x, img.y);
     }
