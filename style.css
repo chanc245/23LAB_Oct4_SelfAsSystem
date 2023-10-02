@@ -1,0 +1,134 @@
+body {
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Fredoka One';
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#canvas-wrapper {
+  position: relative;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+
+  margin: 20px;
+
+  color: rgb(50, 50, 50);
+}
+
+h1.light {
+  color: rgb(110, 110, 110);
+}
+
+p {
+  text-align: center;
+  font-size: 25px;
+
+  margin: 10px;
+
+  color: rgb(50, 50, 50);
+}
+
+p.light {
+  color: rgb(82, 96, 196);
+}
+
+p.user {
+  color: rgb(82, 168, 196);
+}
+
+
+/* LABEL STYLING */
+label {
+  font-size: 25px;
+  color: #333;
+
+  display: inline-block;
+  margin-right: 2px;
+}
+
+
+input[type="text"] {
+  padding: 8px;
+  border: 12x solid #ccc;
+  border-radius: 5px;
+
+  text-align: center;
+
+  font-size: 20px;
+  font-family: 'Fredoka One';
+  color: rgb(70, 70, 70);
+}
+
+input[type="text"]:focus {
+  border: 2px solid rgb(112, 127, 247);
+  outline: none;
+}
+
+
+/* BUTTON STYLEING */
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #d8d8d8;
+  color: white;
+
+  border: 3px solid rgba(169, 169, 169, 0);
+  padding: 10px 24px;
+  margin: 10px;
+  border-radius: 8px;
+
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  display: inline-block;
+  cursor: pointer;
+
+  transition-duration: 0.4s;
+}
+
+.btn:hover {
+  background-color: #adadad;
+  border: 3px solid rgb(91, 91, 91);
+}
+
+.btn.music:hover {
+  background-color: #bbb8e6;
+  border: 3px solid rgb(112, 127, 247);
+}
+
+.btn.user:hover {
+  background-color: #b8dae6;
+  border: 3px solid rgb(103, 192, 224);
+}
+
+.text-container {
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1;
+}
