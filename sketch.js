@@ -50,6 +50,7 @@ let jpLastClickedButton = null;
 function updateSongPref(choice, button) {
   jpSong = choice;
   localStorage.setItem('jpSong', jpSong);
+  console.log(jpSong);
 
   //changing button color
   if (jpLastClickedButton) {
@@ -103,6 +104,7 @@ function updateVocaloidSongPref(choice, button) {
 //flower - page2.html
 let userFlower = null;
 let floLastClickedButton = null;
+localStorage.setItem('flower', null);
 function chooseFlower(choice, buttonFlo) {
   userFlower = choice;
   localStorage.setItem('flower', userFlower);
@@ -216,9 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const p4_flowerMessage = document.getElementById("p4-flower-Message");
 
-  if (userFlower = "true") {
-    // p4_flowerMessage.innerText = "Good that you like flowers:D Here are some flowers you can drag around with!";
-    p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
+  if (userFlowerFromStorage == "true") {
+    p4_flowerMessage.innerText = "Good that you like flowers:D Here are some flowers you can drag around with!";
+    // p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
   } else {
     p4_flowerMessage.innerText = "it's alright that you don't like flowers! You can drag around some flower to get closer to them c:";
   }
@@ -229,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // CALCULATE RESULT
 function songResult() {
+  // console.log("songResult Called");
   var userData = {
     name: localStorage.getItem("name"),
     animal: localStorage.getItem("animal"),
@@ -242,43 +245,76 @@ function songResult() {
   };
 
   var userDataJSON = JSON.stringify(userData);
+  console.log(userDataJSON);
 
-  if (!userData.jpSong) {
-    alert("Musical");
-  } else if (userData.jpSong && userData.vocaloidSong) {
-    alert("Vocaloid");
-  } else if (userData.jpSong && !userData.vocaloidSong && userData.oldSong) {
-    alert("J80sPop");
-  } else if (userData.jpSong && !userData.vocaloidSong && !userData.oldSong) {
-    alert("JPop");
+  // console.log(userData.jpSong);
+  // console.log(userData.vocaloidSong);
+  // console.log(userData.jpSong && userData.vocaloidSong);
+
+  if ((userData.jpSong == "false")) {
+    console.log("musical");
+
+    if ((userData.mood == "true") && (userData.match == "true")) {
+      console.log("upbeat");
+      var iframes = document.querySelectorAll('#iframe-container .musical.upbeat iframe');
+    } else if ((userData.mood == "true") && (userData.match == "false")) {
+      console.log("sad");
+      var iframes = document.querySelectorAll('#iframe-container .musical.sad iframe');
+    } else if ((userData.mood == "false") && (userData.match == "true")) {
+      console.log("sad");
+      var iframes = document.querySelectorAll('#iframe-container .musical.sad iframe');
+    } else {
+      console.log("upbeat");
+      var iframes = document.querySelectorAll('#iframe-container .musical.upbeat iframe');
+    }
+
+    if (iframes.length > 0) {
+      var randomIndex = Math.floor(Math.random() * iframes.length);
+      var randomIframe = iframes[randomIndex];
+
+      for (var i = 0; i < iframes.length; i++) {
+        iframes[i].style.display = 'none';
+      }
+
+      randomIframe.style.display = 'block';
+    } else {
+      console.log("Error");
+    }
+
+  } else if ((userData.jpSong == "true") && (userData.vocaloidSong == "true")) {
+    console.log("vocaloid");
+
+    if ((userData.mood == "true") && (userData.match == "true")) {
+      console.log("upbeat");
+    } else if ((userData.mood == "true") && (userData.match == "false")) {
+      console.log("sad");
+    } else if ((userData.mood == "fasle") && (userData.match == "true")) {
+      console.log("sad");
+    } else {
+      console.log("upbeat");
+    }
+
+  } else if ((userData.jpSong == "true") && (userData.vocaloidSong == "false") && (userData.oldSong == "true")) {
+    console.log("J80sPop");
+
+    var iframes = document.querySelectorAll('#iframe-container jpop-80s iframe');
+
+  } else if ((userData.jpSong == "true") && (userData.vocaloidSong == "false") && (userData.oldSong == "false")) {
+    console.log("JPop");
+
+    if ((userData.mood == "true") && (userData.match == "true")) {
+      console.log("upbeat");
+    } else if ((userData.mood == "true") && (userData.match == "false")) {
+      console.log("sad");
+    } else if ((userData.mood == "fasle") && (userData.match == "true")) {
+      console.log("sad");
+    } else {
+      console.log("upbeat");
+    }
+
   } else {
-    alert("Some other genre");
+    alert("ERROR");
   }
-
-
-  //im going crazy, this never works, not even chatGPTcan help? oh my god, im done with this.
-
-
-
-  // // Get all the iframes within the container
-  // var iframes = document.querySelectorAll('#iframe-container iframe');
-  // //musical-upbeat, musical-sad, 
-  // //jpop-80s, 
-  // //vocaloid-upbeat, vocaloid-sad,
-  // //jpop-chill, jpop-upbeat, 
-
-  // // Generate a random index
-  // var randomIndex = Math.floor(Math.random() * iframes.length);
-
-  // // Hide all iframes
-  // for (var i = 0; i < iframes.length; i++) {
-  //   iframes[i].style.display = 'none';
-  // }
-
-  // // Display the randomly selected iframe
-  // iframes[randomIndex].style.display = 'block';
-
-
 }
 
 
@@ -290,7 +326,7 @@ function songResult() {
 
 
 // MOVING FLOWERS AROUND (p5.js)
-// let flowerShow = true;
+// let flowerShow = false;
 
 let images = [];
 let imageSize = 200; // all sizes
@@ -338,9 +374,14 @@ function setup() {
 function draw() {
   background(250);
 
-  if (flowerShow) {
+  const userFlower = localStorage.getItem("flower");
+  console.log(userFlower);
+
+  if ((userFlower !== "null")) {
+
     for (let img of images) {
       image(img, img.x, img.y);
+      console.log(userFlower);
     }
   }
 }

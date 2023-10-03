@@ -137,8 +137,7 @@ input[type="text"]:focus {
 #iframe-container {
   display: flex;
   width: 50%;
-  /* height: 98vh; */
-  height: 50%
+  height: auto;
 }
 
 #iframe-container iframe {
