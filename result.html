@@ -13,7 +13,9 @@
   <div class="text-container">
     <h1>Chris's Music Recommendation</h1>
 
-    <button class="btn music" onclick="songResult()">Calculate Your Result!</button>
+    <p id="result-finalMessage1"></p>
+    <p id="result-finalMessage2"></p>
+    <p id="result-finalMessage3"></p>
 
     <div id="musical-upbeat">
       <iframe style="border-radius:12px"
@@ -207,6 +209,8 @@
         height="152" frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
+
+    <button class="btn music" onclick="songResult()">Calculate Your Result!</button>
 
     <a href="index.html">
       <button class="btn">Restart</button>

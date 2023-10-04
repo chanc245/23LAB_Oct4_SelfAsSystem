@@ -236,7 +236,35 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
 
-  //name, animal, color, flower, mood, 
+  const userNameFromStorage = localStorage.getItem("name");
+  const userAnimalFromStorage = localStorage.getItem("animal");
+  const userColorFromStorage = localStorage.getItem("color");
+  const userFlowerFromStorage = localStorage.getItem("flower");
+  let userMoodFromStorage = localStorage.getItem("mood");
+
+  if (userMoodFromStorage == "true") {
+    userMoodFromStorage = "happy";
+  } else {
+    userMoodFromStorage = "sad";
+  }
+
+  const resultMessage1 = document.getElementById("result-finalMessage1");
+  const resultMessage2 = document.getElementById("result-finalMessage2");
+  const resultMessage3 = document.getElementById("result-finalMessage3");
+  resultMessage1.innerText =
+    "Hey "
+    + userNameFromStorage
+    + " here's a page that design to fit to your liking, ";
+
+  resultMessage2.innerText =
+    "I see that you are "
+    + userMoodFromStorage
+    + "! I hope cute "
+    + userAnimalFromStorage
+    + " gifs make you a little bit happeier today!";
+
+  resultMessage3.innerText =
+    "Please enjoy this music recommendation from my personal music data :D";
 
   // Hey user.name, here's a page that design to fit to you liking, 
   //I see that you are user.mood today! 
