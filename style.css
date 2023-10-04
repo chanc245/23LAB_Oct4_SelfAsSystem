@@ -134,12 +134,79 @@ input[type="text"]:focus {
 }
 
 /* SPOTIFY PLAYER */
-#iframe-container {
+/* musical-upbeat */
+#musical-upbeat {
   display: flex;
   width: 50%;
   height: auto;
 }
 
-#iframe-container iframe {
+#musical-upbeat iframe {
+  display: none;
+}
+
+/* musical-sad */
+#musical-sad {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#musical-sad iframe {
+  display: none;
+}
+
+/* jpop-80s */
+#jpop-80s {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#jpop-80s iframe {
+  display: none;
+}
+
+/* vocaloid-upbeat */
+#vocaloid-upbeat {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#vocaloid-upbeat iframe {
+  display: none;
+}
+
+/* vocaloid-sad */
+#vocaloid-sad {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#vocaloid-sad iframe {
+  display: none;
+}
+
+/* jpop-upbeat */
+#jpop-upbeat {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#jpop-upbeat iframe {
+  display: none;
+}
+
+/* jpop-chill */
+#jpop-chill {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+#jpop-chill iframe {
   display: none;
 }
