@@ -50,7 +50,9 @@ p.user {
 }
 
 
-/* LABEL STYLING */
+/* --------------------LABEL STYLING-------------------- */
+/* --------------------LABEL STYLING-------------------- */
+/* --------------------LABEL STYLING-------------------- */
 label {
   font-size: 25px;
   color: #333;
@@ -78,7 +80,9 @@ input[type="text"]:focus {
 }
 
 
-/* BUTTON STYLEING */
+/* --------------------BUTTON STYLEING-------------------- */
+/* --------------------BUTTON STYLEING-------------------- */
+/* --------------------BUTTON STYLEING-------------------- */
 .btn-container {
   display: flex;
   justify-content: center;
@@ -104,11 +108,11 @@ input[type="text"]:focus {
 }
 
 .btn.next {
-  background-color: #d3d6c6;
+  background-color: #adadad;
 }
 
 .btn:hover {
-  background-color: #adadad;
+  background-color: #797979;
   border: 3px solid rgb(91, 91, 91);
 }
 
@@ -137,7 +141,9 @@ input[type="text"]:focus {
   z-index: 1;
 }
 
-/* SPOTIFY PLAYER */
+/* --------------------SPOTIFY PLAYER-------------------- */
+/* --------------------SPOTIFY PLAYER-------------------- */
+/* --------------------SPOTIFY PLAYER-------------------- */
 /* musical-upbeat */
 #musical-upbeat {
   display: flex;
