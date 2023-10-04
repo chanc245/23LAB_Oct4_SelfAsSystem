@@ -265,15 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resultMessage3.innerText =
     "Please enjoy this music recommendation from my personal music data :D";
-
-  // Hey user.name, here's a page that design to fit to you liking, 
-  //I see that you are user.mood today! 
-  //I hope cute user.animal gifs makes you a little bit happeier! 
-  //Please enjoy this music recommendation from me! 
-
-
-  // resultMessage 
-
 });
 
 // --------------------CALCULATE RESULT-------------------- //
