@@ -19,6 +19,12 @@
 //// localStorage.setItem('match', match);
 // ALL VARIABLES
 
+let currentPath = window.location.pathname;
+// if (currentPath === '/index.html')
+
+// --------------------FETCHING VARIABLE-------------------- //
+// --------------------FETCHING VARIABLE-------------------- //
+// --------------------FETCHING VARIABLE-------------------- //
 //name - index.html
 function getName() {
   var nameInput = document.getElementById("name-input");
@@ -178,8 +184,9 @@ function matchInput(choice, buttonMat) {
 }
 
 
-
-// LOADING MESSAGE
+// --------------------LOADING MESSAGE-------------------- //
+// --------------------LOADING MESSAGE-------------------- //
+// --------------------LOADING MESSAGE-------------------- //
 // page1.html
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -217,7 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const userFlowerFromStorage = localStorage.getItem("flower");
 
   const p4_flowerMessage = document.getElementById("p4-flower-Message");
-
   if (userFlowerFromStorage == "true") {
     p4_flowerMessage.innerText = "Good that you like flowers:D Here are some flowers you can drag around with!";
     // p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
@@ -226,10 +232,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// result.html
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  //name, animal, color, flower, mood, 
+
+  // Hey user.name, here's a page that design to fit to you liking, 
+  //I see that you are user.mood today! 
+  //I hope cute user.animal gifs makes you a little bit happeier! 
+  //Please enjoy this music recommendation from me! 
 
 
+  // resultMessage 
 
-// CALCULATE RESULT
+});
+
+// --------------------CALCULATE RESULT-------------------- //
+// --------------------CALCULATE RESULT-------------------- //
+// --------------------CALCULATE RESULT-------------------- //
+
 function songResult() {
   // console.log("songResult Called");
   var userData = {
@@ -256,16 +278,19 @@ function songResult() {
 
     if ((userData.mood == "true") && (userData.match == "true")) {
       console.log("upbeat");
-      var iframes = document.querySelectorAll('#iframe-container .musical.upbeat iframe');
+      var iframes = document.querySelectorAll('#musical-upbeat iframe');
+
     } else if ((userData.mood == "true") && (userData.match == "false")) {
       console.log("sad");
-      var iframes = document.querySelectorAll('#iframe-container .musical.sad iframe');
+      var iframes = document.querySelectorAll('#musical-sad iframe');
+
     } else if ((userData.mood == "false") && (userData.match == "true")) {
       console.log("sad");
-      var iframes = document.querySelectorAll('#iframe-container .musical.sad iframe');
+      var iframes = document.querySelectorAll('#musical-sad iframe');
+
     } else {
       console.log("upbeat");
-      var iframes = document.querySelectorAll('#iframe-container .musical.upbeat iframe');
+      var iframes = document.querySelectorAll('#musical-upbeat iframe');
     }
 
     if (iframes.length > 0) {
@@ -286,44 +311,64 @@ function songResult() {
 
     if ((userData.mood == "true") && (userData.match == "true")) {
       console.log("upbeat");
+      var iframes = document.querySelectorAll('#vocaloid-upbeat iframe');
+
     } else if ((userData.mood == "true") && (userData.match == "false")) {
       console.log("sad");
+      var iframes = document.querySelectorAll('#vocaloid-sad iframe');
+
     } else if ((userData.mood == "fasle") && (userData.match == "true")) {
       console.log("sad");
+      var iframes = document.querySelectorAll('#vocaloid-sad iframe');
+
     } else {
       console.log("upbeat");
+      var iframes = document.querySelectorAll('#vocaloid-upbeat iframe');
     }
 
   } else if ((userData.jpSong == "true") && (userData.vocaloidSong == "false") && (userData.oldSong == "true")) {
     console.log("J80sPop");
 
-    var iframes = document.querySelectorAll('#iframe-container jpop-80s iframe');
+    var iframes = document.querySelectorAll('#jpop-80s iframe');
 
   } else if ((userData.jpSong == "true") && (userData.vocaloidSong == "false") && (userData.oldSong == "false")) {
     console.log("JPop");
 
     if ((userData.mood == "true") && (userData.match == "true")) {
       console.log("upbeat");
+      var iframes = document.querySelectorAll('#jpop-upbeat iframe');
+
     } else if ((userData.mood == "true") && (userData.match == "false")) {
-      console.log("sad");
+      console.log("chill");
+      var iframes = document.querySelectorAll('#jpop-chill iframe');
+
     } else if ((userData.mood == "fasle") && (userData.match == "true")) {
-      console.log("sad");
+      console.log("chill");
+      var iframes = document.querySelectorAll('#jpop-chill iframe');
+
     } else {
       console.log("upbeat");
+      var iframes = document.querySelectorAll('#jpop-upbeat iframe');
     }
 
   } else {
     alert("ERROR");
   }
+
+  var randomIndex = Math.floor(Math.random() * iframes.length);
+
+  // Hide all iframes
+  for (var i = 0; i < iframes.length; i++) {
+    iframes[i].style.display = 'none';
+  }
+
+  // Display the randomly selected iframe
+  iframes[randomIndex].style.display = 'block';
 }
 
-
-
-
-
-
-
-
+// --------------------FLOWER P5.JS-------------------- //
+// --------------------FLOWER P5.JS-------------------- //
+// --------------------FLOWER P5.JS-------------------- //
 
 // MOVING FLOWERS AROUND (p5.js)
 // let flowerShow = false;
@@ -371,6 +416,8 @@ function setup() {
   images[4].y = height / 2 + imgPosition;
 }
 
+// currentPath === '/index.html'
+
 function draw() {
   background(250);
 
@@ -378,10 +425,11 @@ function draw() {
   console.log(userFlower);
 
   if ((userFlower !== "null")) {
-
-    for (let img of images) {
-      image(img, img.x, img.y);
-      console.log(userFlower);
+    if (currentPath === '/page4.html' || currentPath === '/result.html') {
+      for (let img of images) {
+        image(img, img.x, img.y);
+        console.log(userFlower);
+      }
     }
   }
 }
