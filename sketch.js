@@ -191,10 +191,14 @@ function matchInput(choice, buttonMat) {
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
 
-  const userName = urlParams.get("name");
+  const userName = localStorage.getItem("name");
 
   const p1_welcome = document.getElementById("p1-welcome-Message");
-  p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to see you here! :D";
+  if ((userName === "sobi") || (userName === "Sobi") || (userName === "Seobin") || (userName === "sb") || (userName === "SB") || (userName === "bini")) {
+    p1_welcome.innerText = "Ah! " + localStorage.getItem("name") + "! soooo nice to see you here! muah muah <3";
+  } else {
+    p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to see you here! :D";
+  }
 });
 
 // page2.html
@@ -206,10 +210,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const p2_animalMessage = document.getElementById("p2-animal-Message");
   // p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", here are some cute " + userAnimalFromStorage + "'s GIFs just for you!";
 
-  if (userAnimalFromStorage == "dog") {
+  if ((userAnimalFromStorage == "dog")) {
     p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", woof woof!";
   } else {
-    p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", mew mew!!";
+    p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", mew miaow!!";
   }
 });
 
@@ -484,17 +488,17 @@ function draw() {
   // }
 
   if ((userColor !== "null")) {
-    if (userColor == "pink") {
+    if ((userColor == "pink")) {
       background('#FCEAEA');//light pink
-    } else if (userColor == "orange") {
+    } else if ((userColor == "orange")) {
       background('#FFE9D9');//light orange
-    } else if (userColor == "yellow") {
+    } else if ((userColor == "yellow")) {
       background('#FFFCDF');//light yellow
-    } else if (userColor == "green") {
+    } else if ((userColor == "green")) {
       background('#EAFCEB');//light green
-    } else if (userColor == "blue") {
+    } else if ((userColor == "blue")) {
       background('#EAF3FC');//light blue
-    } else if (userColor == "purple") {
+    } else if ((userColor == "purple")) {
       background('#F6EAFC');//light purple
     } else {
       background(250);
@@ -502,7 +506,7 @@ function draw() {
   }
 
   // if ((userFlower !== "null")) {
-  if ((currentPath === '/page4.html') || (currentPath === '/result.html')) {
+  if ((currentPath == '/page4.html') || (currentPath == '/result.html')) {
     for (let img of images) {
       image(img, img.x, img.y);
       // console.log(userFlower);
