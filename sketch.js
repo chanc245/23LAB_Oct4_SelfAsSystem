@@ -71,7 +71,7 @@ function updateSongPref(choice, button) {
 }
 
 //color - page2.html
-let userColor = '';
+let userColor = null;
 let ColLastClickedButton = null;
 function chooseColor(choice, buttonCol) {
   userColor = choice;
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userName = urlParams.get("name");
 
   const p1_welcome = document.getElementById("p1-welcome-Message");
-  p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to meet you :D";
+  p1_welcome.innerText = "Hey " + localStorage.getItem("name") + " nice to see you here! :D";
 });
 
 // page2.html
@@ -204,7 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const userAnimalFromStorage = localStorage.getItem("animal");
 
   const p2_animalMessage = document.getElementById("p2-animal-Message");
-  p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", here are some cute " + userAnimalFromStorage + "'s GIFs just for you!";
+  // p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", here are some cute " + userAnimalFromStorage + "'s GIFs just for you!";
+
+  if (userAnimalFromStorage == "dog") {
+    p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", woof woof!";
+  } else {
+    p2_animalMessage.innerText = "Woo! I see you like " + userAnimalFromStorage + ", mew mew!!";
+  }
 });
 
 // page3.html
@@ -222,14 +228,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
 
   const userFlowerFromStorage = localStorage.getItem("flower");
+  // console.log(localStorage.getItem("flower"));
 
   const p4_flowerMessage = document.getElementById("p4-flower-Message");
-  if (userFlowerFromStorage == "true") {
-    p4_flowerMessage.innerText = "Good that you like flowers:D Here are some flowers you can drag around with!";
-    // p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
-  } else {
-    p4_flowerMessage.innerText = "it's alright that you don't like flowers! You can drag around some flower to get closer to them c:";
-  }
+  p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
+  // if (userFlowerFromStorage == "false") {
+  //   p4_flowerMessage.innerText = "it's alright that you don't like flowers! You can drag around some flower to get closer to them c:";
+
+  //   // p4_flowerMessage.innerText = "Here are some flowers you can drag around with!";
+  // } else {
+  //   p4_flowerMessage.innerText = "Good that you like flowers :D Here are some flowers you can drag around with!";
+  // }
 });
 
 // result.html
@@ -239,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNameFromStorage = localStorage.getItem("name");
   const userAnimalFromStorage = localStorage.getItem("animal");
   const userColorFromStorage = localStorage.getItem("color");
-  const userFlowerFromStorage = localStorage.getItem("flower");
+  // const userFlowerFromStorage = localStorage.getItem("flower");
   let userMoodFromStorage = localStorage.getItem("mood");
 
   if (userMoodFromStorage == "true") {
@@ -251,21 +260,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultMessage1 = document.getElementById("result-finalMessage1");
   const resultMessage2 = document.getElementById("result-finalMessage2");
   const resultMessage3 = document.getElementById("result-finalMessage3");
+  // resultMessage1.innerText =
+  //   "Hey "
+  //   + userNameFromStorage
+  //   + " here's a page that design to fit to your liking, ";
+
+  // resultMessage2.innerText =
+  //   "I see that you are "
+  //   + userMoodFromStorage
+  //   + "! I hope cute "
+  //   + userAnimalFromStorage
+  //   + " gifs make you a little bit happeier today!";
+
   resultMessage1.innerText =
     "Hey "
     + userNameFromStorage
-    + " here's a page that design to fit to your liking, ";
+    + " thank you for visiting my website!";
 
   resultMessage2.innerText =
     "I see that you are "
     + userMoodFromStorage
-    + "! I hope cute "
-    + userAnimalFromStorage
-    + " gifs make you a little bit happeier today!";
+    + "! I hope this song makes you a little bit happeier today!";
 
   resultMessage3.innerText =
     "Please enjoy this music recommendation from my personal music data :D";
 });
+
+// --------------------GIF RANDOM-------------------- //
+// --------------------GIF RANDOM-------------------- //
+// --------------------GIF RANDOM-------------------- //
+// window.onload = function() {}
+function randomlySelectGIF() {
+  const userAnimalFromStorage = localStorage.getItem("animal");
+
+  if (userAnimalFromStorage == "dog") {
+    var gifEmbed = document.querySelectorAll('.dogtenor-gif-embed');
+  } else {
+    var gifEmbed = document.querySelectorAll('.cattenor-gif-embed');
+  }
+  var randomIndex = Math.floor(Math.random() * gifEmbed.length);
+
+  for (var i = 0; i < gifEmbed.length; i++) {
+    gifEmbed[i].style.display = 'none';
+  }
+
+  gifEmbed[randomIndex].style.display = 'block';
+}
+
+// this is not working btw.. sad.
 
 // --------------------CALCULATE RESULT-------------------- //
 // --------------------CALCULATE RESULT-------------------- //
@@ -287,10 +329,6 @@ function songResult() {
 
   var userDataJSON = JSON.stringify(userData);
   console.log(userDataJSON);
-
-  // console.log(userData.jpSong);
-  // console.log(userData.vocaloidSong);
-  // console.log(userData.jpSong && userData.vocaloidSong);
 
   if ((userData.jpSong == "false")) {
     console.log("musical");
@@ -411,45 +449,65 @@ function setup() {
 
   imageMode(CENTER);
 
-  let imgPosition = 0;
+  let imgYPosition = 10;
+  let imgXPosition = 100;
 
   // location of images
   images[0].resize(imageSize, imageSize);
-  images[0].x = width / 6 * 1;
-  images[0].y = height / 2 + imgPosition;
+  images[0].x = width / 6 * 1 - imgXPosition;
+  images[0].y = height / 2 + imgYPosition;
 
   images[1].resize(imageSize, imageSize);
-  images[1].x = width / 6 * 2;
-  images[1].y = height / 2 + imgPosition;
+  images[1].x = width / 6 * 2 - imgXPosition;
+  images[1].y = height / 2 + imgYPosition;
 
-  images[2].resize(imageSize, imageSize);
-  images[2].x = width / 6 * 3;
-  images[2].y = height / 2 + imgPosition;
+  // images[2].resize(imageSize, imageSize);
+  // images[2].x = width / 6 * 3;
+  // images[2].y = height / 2 + imgYPosition; // remove this so it wont be effecting reading stuff
 
   images[3].resize(imageSize, imageSize);
-  images[3].x = width / 6 * 4;
-  images[3].y = height / 2 + imgPosition;
+  images[3].x = width / 6 * 4 + imgXPosition;
+  images[3].y = height / 2 + imgYPosition;
 
   images[4].resize(imageSize, imageSize);
-  images[4].x = width / 6 * 5;
-  images[4].y = height / 2 + imgPosition;
+  images[4].x = width / 6 * 5 + imgXPosition;
+  images[4].y = height / 2 + imgYPosition;
 }
 
 // currentPath === '/index.html'
-
 function draw() {
-  background(250);
-
   const userFlower = localStorage.getItem("flower");
-  console.log(userFlower);
+  const userColor = localStorage.getItem("color");
 
-  if ((userFlower !== "null")) {
-    if (currentPath === '/page4.html' || currentPath === '/result.html') {
-      for (let img of images) {
-        image(img, img.x, img.y);
-        console.log(userFlower);
-      }
+  // if (currentPath === '/index.html') {
+  //   background(250);
+  // }
+
+  if ((userColor !== "null")) {
+    if (userColor == "pink") {
+      background('#FCEAEA');//light pink
+    } else if (userColor == "orange") {
+      background('#FFE9D9');//light orange
+    } else if (userColor == "yellow") {
+      background('#FFFCDF');//light yellow
+    } else if (userColor == "green") {
+      background('#EAFCEB');//light green
+    } else if (userColor == "blue") {
+      background('#EAF3FC');//light blue
+    } else if (userColor == "purple") {
+      background('#F6EAFC');//light purple
+    } else {
+      background(250);
     }
+  }
+
+  // if ((userFlower !== "null")) {
+  if ((currentPath === '/page4.html') || (currentPath === '/result.html')) {
+    for (let img of images) {
+      image(img, img.x, img.y);
+      // console.log(userFlower);
+    }
+    // }
   }
 }
 

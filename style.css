@@ -141,6 +141,35 @@ input[type="text"]:focus {
   z-index: 1;
 }
 
+/* --------------------GIF-------------------- */
+/* --------------------GIF-------------------- */
+/* --------------------GIF-------------------- */
+.gif-container {
+  justify-content: center;
+  position: absolute;
+
+  bottom: 15%;
+  right: 15%;
+}
+
+.dog-tenor-gif-embed {
+  display: none;
+
+  justify-content: center;
+  position: absolute;
+
+  max-width: 200px;
+}
+
+.cat-tenor-gif-embed {
+  display: none;
+
+  justify-content: center;
+  position: absolute;
+
+  max-width: 200px;
+}
+
 /* --------------------SPOTIFY PLAYER-------------------- */
 /* --------------------SPOTIFY PLAYER-------------------- */
 /* --------------------SPOTIFY PLAYER-------------------- */
